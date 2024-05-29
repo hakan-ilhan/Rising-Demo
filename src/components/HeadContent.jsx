@@ -3,13 +3,23 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect } from "react";
 import Info from "./Info";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
-
+import { toast } from "react-toastify";
 function HeadContent() {
   const history = useHistory();
   useEffect(() => {
     if (!localStorage.getItem("token")) {
       history.push("/");
     }
+    toast.success("Welcome", {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
   }, []);
 
   return (

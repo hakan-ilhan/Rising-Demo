@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from "react";
 import { Context } from "../context/Context";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
+import { toast } from "react-toastify";
 
 function Login() {
   const {
@@ -56,6 +57,7 @@ function Login() {
         console.log(res.data);
         localStorage.setItem("token", res.data.jwt);
         setToken(res.data.jwt);
+
         axios
           .get("https://recruitment-api.vercel.app/get-table", {
             headers: { Authorization: localStorage.getItem("token") },
@@ -65,7 +67,9 @@ function Login() {
             console.log("TABLE :", table);
             history.push("/dash");
           })
-          .catch((error) => console.error("Error fetching table data:", error));
+          .catch((error) => {
+            console.error("Error fetching table data:", error);
+          });
 
         axios
           .get("https://recruitment-api.vercel.app/get-info", {
@@ -75,8 +79,19 @@ function Login() {
             setInfo(response.data);
             console.log("INFO :", info);
           })
-          .catch((error) => console.error("Error fetching info data:", error));
-        history.push("/dash");
+          .catch((error) => {});
+      })
+      .catch(() => {
+        toast.error("Invalid username or password", {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
       });
   };
 
