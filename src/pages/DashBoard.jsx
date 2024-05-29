@@ -1,9 +1,9 @@
 import React, { useContext, useEffect } from "react";
 import { Context } from "../context/Context";
-import SiderBar from "./SiderBar";
-import HeadContent from "./HeadContent";
-import Chart from "./Chart";
-import Transaction from "./Transaction";
+import SiderBar from "../components/SiderBar";
+import HeadContent from "../components/HeadContent";
+import Chart from "../components/Chart";
+import Transaction from "../components/Transaction";
 
 function DashBoard() {
   const { table, setTable, info, setInfo } = useContext(Context);

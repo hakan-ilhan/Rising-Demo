@@ -5,12 +5,15 @@ import {
   DropdownMenu,
   DropdownItem,
 } from "reactstrap";
-import PropTypes from "prop-types";
 
-function DropDown({ direction, ...args }) {
+function DropDown({ number, direction, ...args }) {
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
   const toggle = () => setDropdownOpen((prevState) => !prevState);
+
+  const numberOfIp = (number) => {
+    console.log("Number of Ip: ", number);
+  };
 
   return (
     <div className="d-flex">
@@ -23,9 +26,15 @@ function DropDown({ direction, ...args }) {
           Action
         </DropdownToggle>
         <DropdownMenu {...args} style={{ width: "35px" }}>
-          <DropdownItem>Foo Action</DropdownItem>
-          <DropdownItem>Bar Action</DropdownItem>
-          <DropdownItem>Quo Action</DropdownItem>
+          <DropdownItem onClick={() => numberOfIp(number)}>
+            Foo Action
+          </DropdownItem>
+          <DropdownItem onClick={() => numberOfIp(number)}>
+            Bar Action
+          </DropdownItem>
+          <DropdownItem onClick={() => numberOfIp(number)}>
+            Quo Action
+          </DropdownItem>
         </DropdownMenu>
       </Dropdown>
     </div>

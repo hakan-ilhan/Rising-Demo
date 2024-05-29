@@ -3,9 +3,6 @@ import { Context } from "../context/Context";
 
 function Info() {
   const { info } = useContext(Context);
-  console.log("Info : ", info);
-
-  const infos = [0, 1, 2, 3];
 
   if (!info) {
     return;

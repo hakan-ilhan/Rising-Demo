@@ -4,7 +4,6 @@ import { Context } from "../context/Context";
 
 function Transaction() {
   const { table } = useContext(Context);
-  console.log("????", table);
 
   if (!table) {
     return;
@@ -38,7 +37,7 @@ function Transaction() {
               <div className="w-24 text-center">{item.ipcount}</div>
               <div className="w-24 text-center">{item.purpose}</div>
               <div className="w-24 text-center">{formattedDate}</div>
-              <DropDown />
+              <DropDown number={item.ipcount} />
             </div>
             <hr className="text-gray-400"></hr>
           </>
